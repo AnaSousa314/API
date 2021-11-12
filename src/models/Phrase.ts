@@ -1,0 +1,26 @@
+import {Model,DataTypes} from 'sequelize';
+import { sequelize } from '../instances/pg';
+
+export interface PhraseInstance extends Model{
+    id: string;
+    author: string;
+    txt: string;
+}
+
+export const Phrase = sequelize.define<PhraseInstance>('Phrase',{
+    id:{
+        primaryKey: true,
+        autoIncrement: true,
+        type: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV1
+    },
+    author: {
+        type: DataTypes.STRING
+    },
+    txt: {
+        type: DataTypes.STRING
+    }
+},{
+   tableName: 'phrases',
+   timestamps: false
+})
