@@ -29,3 +29,25 @@ export const createPhrase = async (req: Request,res:Response)=>{
   res.status(201);
   res.json({id: newPhrase.id,author,txt});
 }
+
+export const listPhrases = async(req: Request,res:Response)=>{
+  let list = await Phrase.findAll();
+  
+  res.json({list});
+}
+
+export const getPhrase = async(req: Request,res:Response)=>{
+
+  let {id} = req.params;
+
+  let phrase = await Phrase.findByPk(id);
+
+  if(phrase){
+    res.status(200);
+    res.json({phrase});
+  }else{
+    res.status(401);
+    res.json({error: 'Frase não encontrada'});
+  }
+
+}
