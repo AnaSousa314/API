@@ -11,8 +11,9 @@ export const Phrase = sequelize.define<PhraseInstance>('Phrase',{
     id:{
         primaryKey: true,
         autoIncrement: true,
-        type: DataTypes.UUIDV4,
-        defaultValue: DataTypes.UUIDV1
+        // type: DataTypes.UUIDV4,
+        // defaultValue: DataTypes.UUIDV1
+        type: DataTypes.INTEGER
     },
     author: {
         type: DataTypes.STRING
